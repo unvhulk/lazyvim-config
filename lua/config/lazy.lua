@@ -7,7 +7,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
@@ -30,7 +29,8 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
 
-  install = { colorscheme = { "catppuccin", "tokyonight" } },
+  -- install = { colorscheme = { "catppuccin", "tokyonight" } },
+  install = { colorscheme = { "catppuccin" } },
 
   checker = { enabled = true }, -- automatically check for plugin updates
 
@@ -38,14 +38,14 @@ require("lazy").setup({
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
-        -- "gzip",
+        "gzip",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
         "tarPlugin",
-        -- "tohtml",
+        "tohtml",
         -- "tutor",
-        -- "zipPlugin",
+        "zipPlugin",
       },
     },
   },
