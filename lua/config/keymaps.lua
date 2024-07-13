@@ -11,17 +11,21 @@ vim.keymap.set({ "i", "n", "v", "t" }, "<C-d>", "<C-d>zz")
 vim.keymap.set({ "i", "n", "v", "t" }, "<A-v>", function()
   require("nvterm.terminal").toggle("vertical")
 end)
-vim.keymap.set({ "i", "n", "v", "t" }, "<A-h>", function()
+vim.keymap.set({ "i", "n", "v", "t" }, "<A-b>", function()
   require("nvterm.terminal").toggle("horizontal")
 end)
 vim.keymap.set({ "i", "n", "v", "t" }, "<A-i>", function()
   require("nvterm.terminal").toggle("float")
 end)
 
+-- Show notifications window
+vim.keymap.set("n", "<Leader>n", "<cmd>Noice<cr>")
+
 -- VS CODE KEYMAPS
 vim.keymap.set("n", "<A-J>", "yyp")
 vim.keymap.set("n", "<A-K>", "yyp")
-vim.keymap.set("n", "<C-Enter>", "ojk")
+-- Map Ctrl+Enter to add a new line below the current line and stay in normal mode
+vim.keymap.set("n", "<C-M>", "o<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<Leader>y", "*y")

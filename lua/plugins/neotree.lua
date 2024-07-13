@@ -12,6 +12,20 @@ return {
       window = {
         width = 35,
       },
+      event_handlers = {
+        {
+          event = "neo_tree_buffer_enter",
+          handler = function()
+            vim.cmd("set relativenumber")
+          end,
+        },
+        {
+          event = "neo_tree_window_open",
+          handler = function()
+            vim.cmd("set relativenumber")
+          end,
+        },
+      },
     },
   },
 }
