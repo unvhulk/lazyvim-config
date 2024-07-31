@@ -12,6 +12,19 @@ return {
       window = {
         width = 35,
       },
+      filesystem = {
+        follow_current_file = true, -- Automatically follow the current file
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+      },
+      buffers = {
+        follow_current_file = true, -- Automatically follow the current buffer
+      },
+      git_status = {
+        follow_current_file = true, -- Automatically follow the current file in git status
+      },
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",

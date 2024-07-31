@@ -30,3 +30,6 @@ vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<Leader>y", "*y")
 vim.keymap.set("n", "<Leader>p", "*p")
+
+--Reopen last closed buffer/file
+vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", { noremap = true, silent = true })
