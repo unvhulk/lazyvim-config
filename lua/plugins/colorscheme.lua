@@ -7,6 +7,16 @@ return {
       style = "night",
       styles = { sidebars = "dark" },
       sidebars = { "qf", "help", "terminal" },
+      dim_inactive = true,
+      lualine_bold = true,
+      on_highlights = function(hl, c)
+        -- Brighten the relative line numbers
+        hl.LineNrAbove = { fg = c.red }
+        hl.CursorLineNr = { fg = c.white }
+        hl.LineNrBelow = { fg = c.magenta }
+        hl.FloatBorder = { fg = c.blue, bg = c.none }
+        hl.WinSeparator = { fg = c.cyan, bg = c.none }
+      end,
     },
   },
 
@@ -79,7 +89,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "tokyonight",
     },
   },
 }
