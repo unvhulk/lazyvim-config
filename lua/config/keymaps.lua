@@ -44,7 +44,7 @@ vim.keymap.set("n", "<S-Right>", ":BufferMoveNext<CR>", opts) -- Shift + Right A
 vim.keymap.set("n", "H", ":BufferPrevious<CR>", opts)
 vim.keymap.set("n", "L", ":BufferNext<CR>", opts)
 
--- Go to specific tab (Ctrl + index)
+-- Go to specific tab (g + number)
 for i = 1, 9 do
-  vim.keymap.set("n", "<C-" .. i .. ">", ":BufferGoto " .. (i - 1) .. "<CR>", opts)
+  vim.keymap.set("n", "g" .. i, ":BufferGoto " .. i .. "<CR>", opts)
 end
