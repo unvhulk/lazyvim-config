@@ -33,3 +33,19 @@ vim.keymap.set("n", "<Leader>p", "*p")
 
 --Reopen last closed buffer/file
 vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", { noremap = true, silent = true })
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Move tabs
+vim.keymap.set("n", "<C-h>", ":BufferMovePrevious<CR>", opts)
+vim.keymap.set("n", "<C-l>", ":BufferMoveNext<CR>", opts)
+
+-- Cycle through tabs
+vim.keymap.set("n", "H", ":BufferPrevious<CR>", opts)
+vim.keymap.set("n", "L", ":BufferNext<CR>", opts)
+
+-- Go to specific tab (Ctrl + index)
+for i = 1, 9 do
+  vim.keymap.set("n", "<C-" .. i .. ">", ":BufferGoto " .. (i - 1) .. "<CR>", opts)
+end
