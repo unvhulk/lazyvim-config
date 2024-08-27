@@ -25,6 +25,13 @@ vim.keymap.set("n", "<Leader>n", "<cmd>Noice<cr>")
 -- VS CODE KEYMAPS
 vim.keymap.set("n", "<A-J>", "yyp")
 vim.keymap.set("n", "<A-K>", "yyp")
+vim.keymap.set("n", "<C-H>", "<C-W>")
+vim.keymap.set({ "n", "v", "t" }, "<C-L>", "e", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-L>", "<Esc>ea", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "t" }, "<C-H>", "b", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-H>", "<Esc>bi", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "t" }, "<C-j>", "}", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "t" }, "<C-k>", "{", { noremap = true, silent = true })
 
 -- Map Ctrl+Enter to add a new line below the current line and stay in normal mode
 vim.keymap.set("n", "<C-M>", "o<Esc>", opts)
