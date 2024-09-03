@@ -3,8 +3,9 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
+      -- transparent = true,
       transparent = true,
-      style = "night",
+      style = "storm",
       styles = { sidebars = "dark" },
       sidebars = { "qf", "help", "terminal" },
       dim_inactive = true,
@@ -34,7 +35,7 @@ return {
             Pmenu = { bg = colors.none },
           }
         end,
-        transparent_background = true,
+        transparent_background = false,
         integrations = {
           ts_rainbow = true,
           telescope = {
