@@ -58,3 +58,7 @@ vim.keymap.set("n", "gt", ":BufferPick<CR>", opts) -- Remaps to <leader>b for bu
 for i = 1, 9 do
   vim.keymap.set("n", "g" .. i, ":BufferGoto " .. i .. "<CR>", opts)
 end
+
+-- ChatGPT keymaps
+-- vim.api.nvim_set_keymap("n", "<leader>acc", ":ChatGPT<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("v", "<leader>aee", ":ChatGPTEditWithInstructions<CR>", { noremap = true, silent = true })

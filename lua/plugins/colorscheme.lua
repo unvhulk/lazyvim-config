@@ -3,9 +3,9 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
-      -- transparent = true,
       transparent = true,
-      style = "storm",
+      -- transparent = false,
+      style = "night",
       styles = { sidebars = "dark" },
       sidebars = { "qf", "help", "terminal" },
       dim_inactive = true,
@@ -14,9 +14,9 @@ return {
         -- Brighten the relative line numbers
         hl.LineNrAbove = { fg = c.red }
         hl.CursorLineNr = { fg = c.white }
-        hl.LineNrBelow = { fg = c.magenta }
-        hl.FloatBorder = { fg = c.blue, bg = c.none }
-        hl.WinSeparator = { fg = c.cyan, bg = c.none }
+        hl.LineNrBelow = { fg = c.green }
+        hl.FloatBorder = { fg = c.magenta, bg = c.none }
+        hl.WinSeparator = { fg = c.white, bg = c.none }
       end,
     },
   },
@@ -35,7 +35,8 @@ return {
             Pmenu = { bg = colors.none },
           }
         end,
-        transparent_background = false,
+        transparent_background = true,
+        -- transparent_background = false,
         integrations = {
           ts_rainbow = true,
           telescope = {
