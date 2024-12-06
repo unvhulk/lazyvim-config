@@ -36,11 +36,13 @@ vim.keymap.set("i", "<C-L>", "<Esc>ea", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-H>", "<Esc>bi", { noremap = true, silent = true })
 
 -- Map Ctrl+Enter to add a new line below the current line and stay in normal mode
-vim.keymap.set("n", "<C-M>", "o<Esc>", opts)
+vim.keymap.set("n", "<C-M>", "\n", opts)
 vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<Leader>y", "*y")
 vim.keymap.set("n", "<Leader>p", "*p")
+vim.keymap.set("n", "<Enter>", ":call append(line('.'), '')<CR>gj", { silent = true })
+vim.keymap.set("n", "<S-Enter>", ":call append(line('.')-1, '')<CR>gk", { silent = true })
 
 --Reopen last closed buffer/file
 vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", opts)

@@ -9,9 +9,6 @@ return {
       "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     opts = {
-      window = {
-        width = 35,
-      },
       filesystem = {
         follow_current_file = true, -- Automatically follow the current file
         filtered_items = {
@@ -19,9 +16,9 @@ return {
           hide_gitignored = false,
         },
       },
-      buffers = {
-        follow_current_file = true, -- Automatically follow the current buffer
-      },
+      -- buffers = {
+      --   follow_current_file = true, -- Automatically follow the current buffer
+      -- },
       git_status = {
         follow_current_file = true, -- Automatically follow the current file in git status
       },
