@@ -12,3 +12,22 @@ if vim.g.neovide then
   vim.g.neovide_transparency = 0.5
   vim.g.neovide_fullscreen = true
 end
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+local cb = require("comment-box")
+
+-- left aligned fixed size box with left aligned text
+keymap({ "n", "v" }, "<Leader>cb", "<Cmd>CBllbox<CR>", opts)
+-- centered adapted box
+keymap({ "n", "v" }, "<Leader>cB", "<Cmd>CBacbox<CR>", opts)
+
+-- left aligned titled line with left aligned text
+keymap({ "n", "v" }, "<Leader>ct", "<Cmd>llline<CR>", opts)
+
+-- centered line
+keymap("n", "<Leader>cL", "<Cmd>CBcline<CR>", opts)
+keymap("i", "<M-l>", "<Cmd>CBcline<CR>", opts)
+
+-- remove a box or a titled line
+keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
