@@ -25,6 +25,7 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.ui.alpha",
+    "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.gitui",
     "lazyvim.plugins.extras.util.mini-hipatterns",
@@ -35,3 +36,4 @@
   },
   "version": 7
 }
+

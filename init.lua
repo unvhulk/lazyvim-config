@@ -31,3 +31,10 @@ keymap("i", "<M-l>", "<Cmd>CBcline<CR>", opts)
 
 -- remove a box or a titled line
 keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
+
+local animate = require("mini.animate")
+animate.setup({
+  scroll = {
+    timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+  },
+})
