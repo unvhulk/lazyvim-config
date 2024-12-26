@@ -8,8 +8,8 @@ vim.opt.clipboard = "unnamedplus"
 -- Neovide settings
 if vim.g.neovide then
   vim.opt.clipboard = "unnamedplus"
-  vim.o.guifont = "JetBrainsMono Nerd Font:h14"
-  vim.g.neovide_transparency = 0.5
+  vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+  vim.g.neovide_transparency = 0.8
   vim.g.neovide_fullscreen = true
 end
 
@@ -32,9 +32,9 @@ keymap("i", "<M-l>", "<Cmd>CBcline<CR>", opts)
 -- remove a box or a titled line
 keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
 
-local animate = require("mini.animate")
-animate.setup({
-  scroll = {
-    timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
-  },
-})
+-- local animate = require("mini.animate")
+-- animate.setup({
+--   scroll = {
+--     timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+--   },
+-- })
