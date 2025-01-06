@@ -51,6 +51,14 @@ vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", opts)
 vim.keymap.set("n", "<S-Left>", ":BufferMovePrevious<CR>", opts) -- Shift + Left Arrow for previous buffer
 vim.keymap.set("n", "<S-Right>", ":BufferMoveNext<CR>", opts) -- Shift + Right Arrow for next buffer
 
+-- Restore default <Enter> behavior in the quickfix list
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<Enter>", "<CR>", { buffer = true, silent = true })
+  end,
+})
+
 -- Cycle through tabs
 vim.keymap.set("n", "H", ":BufferPrevious<CR>", opts)
 vim.keymap.set("n", "L", ":BufferNext<CR>", opts)
