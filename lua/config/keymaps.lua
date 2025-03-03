@@ -5,8 +5,8 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
--- vim.keymap.set({ "i", "n", "v", "t" }, "<C-u>", "<C-u>zz")
--- vim.keymap.set({ "i", "n", "v", "t" }, "<C-d>", "<C-d>zz")
+vim.keymap.set({ "i", "n", "v", "t" }, "<C-u>", "<C-u>zz")
+vim.keymap.set({ "i", "n", "v", "t" }, "<C-d>", "<C-d>zz")
 
 -- vim.keymap.set("n", "<A-w>", "<leader>bd", { silent = true })
 vim.keymap.set({ "i", "n", "v", "t" }, "<A-v>", function()
