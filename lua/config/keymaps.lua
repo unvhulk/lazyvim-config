@@ -38,19 +38,10 @@ vim.keymap.set("i", "<C-H>", "<Esc>bi", { noremap = true, silent = true })
 -- Map Ctrl+Enter to add a new line below the current line and stay in normal mode
 vim.keymap.set("n", "<C-M>", "\n", opts)
 vim.keymap.set("n", "<C-A-a>", "ggVG")
-vim.keymap.set("n", "<C-A-a>", "ggVG")
 vim.keymap.set("n", "<Leader>y", "*y")
 vim.keymap.set("n", "<Leader>p", "*p")
 vim.keymap.set("n", "<Enter>", ":call append(line('.'), '')<CR>gj", { silent = true })
 vim.keymap.set("n", "<S-Enter>", ":call append(line('.')-1, '')<CR>gk", { silent = true })
-
---Reopen last closed buffer/file
-vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", opts)
-
--- Move tabs
-vim.keymap.set("n", "<S-Left>", ":BufferMovePrevious<CR>", opts) -- Shift + Left Arrow for previous buffer
-vim.keymap.set("n", "<S-Right>", ":BufferMoveNext<CR>", opts) -- Shift + Right Arrow for next buffer
-
 -- Restore default <Enter> behavior in the quickfix list
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
@@ -58,6 +49,15 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<Enter>", "<CR>", { buffer = true, silent = true })
   end,
 })
+
+vim.api.nvim_set_keymap("i", "<C-Y>", "<cmd>call augment#Accept()<CR>", { noremap = true, silent = true })
+
+--Reopen last closed buffer/file
+vim.keymap.set("n", "<Leader>bh", "<cmd>e#<cr>", opts)
+
+-- Move tabs
+vim.keymap.set("n", "<S-Left>", ":BufferMovePrevious<CR>", opts) -- Shift + Left Arrow for previous buffer
+vim.keymap.set("n", "<S-Right>", ":BufferMoveNext<CR>", opts) -- Shift + Right Arrow for next buffer
 
 -- Cycle through tabs
 vim.keymap.set("n", "H", ":BufferPrevious<CR>", opts)

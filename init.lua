@@ -9,8 +9,9 @@ vim.opt.clipboard = "unnamedplus"
 -- Neovide settings
 if vim.g.neovide then
   vim.opt.clipboard = "unnamedplus"
-  vim.o.guifont = "JetBrainsMono Nerd Font:h12"
-  vim.g.neovide_transparency = 0.8
+  -- vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+  vim.o.guifont = "ProFont IIx Nerd Font Mono:h10"
+  vim.g.neovide_opacity = 0.85
   vim.g.neovide_fullscreen = true
 end
 
@@ -39,3 +40,5 @@ keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
 --     timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
 --   },
 -- })
+
+vim.g.augment_workspace_folders = { "~/dev/azure/am-explorer-v02/" }
