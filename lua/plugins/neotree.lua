@@ -10,30 +10,34 @@ return {
     },
     opts = {
       filesystem = {
-        follow_current_file = true, -- Automatically follow the current file
+        follow_current_file = {
+          enabled = true,
+        },
+        window = {
+          mappings = {
+            ["P"] = "image_wezterm", -- " or another map
+          },
+        },
+        commands = {
+          image_wezterm = function(state)
+            local node = state.tree:get_node()
+            if node.type == "file" then
+              require("image_preview").PreviewImage(node.path)
+            end
+          end,
+        },
         filtered_items = {
           hide_dotfiles = false,
           hide_gitignored = false,
-          window = {
-            mappings = {
-              ["I"] = "image_wezterm", -- " or another map
-            },
-          },
-          commands = {
-            image_wezterm = function(state)
-              local node = state.tree:get_node()
-              if node.type == "file" then
-                require("image_preview").PreviewImage(node.path)
-              end
-            end,
-          },
         },
       },
       -- buffers = {
       --   follow_current_file = true, -- Automatically follow the current buffer
       -- },
       git_status = {
-        follow_current_file = true, -- Automatically follow the current file in git status
+        follow_current_file = {
+          enabled = true,
+        },
       },
       event_handlers = {
         {

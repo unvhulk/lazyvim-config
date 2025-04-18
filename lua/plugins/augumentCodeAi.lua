@@ -1,3 +1,4 @@
+-- Comment if getting errors in notifications
 return {
   "augmentcode/augment.vim",
   config = function()

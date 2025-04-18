@@ -2,13 +2,23 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- set this if you want to always pull the latest change
   opts = {
-    provider = "gemini",
-    gemini = {
-      api_key_name = "GEMINI_API_KEY",
+    provider = "openai",
+    openai = {
+      endpoint = "https://api.groq.com/openai/v1",
+      api_key_name = "GROQ_API_KEY", -- Ensure this environment variable is set
+      model = "meta-llama/llama-4-scout-17b-16e-instruct", -- Replace with your desired Groq model
+      temperature = 0.7,
+      max_tokens = 4096,
     },
   },
+  version = false, -- set this if you want to always pull the latest change
+  -- opts = {
+  --   provider = "gemini",
+  --   gemini = {
+  --     api_key_name = "GEMINI_API_KEY",
+  --   },
+  -- },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
