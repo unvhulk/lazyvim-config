@@ -1,10 +1,55 @@
+local isTransparent = false
+
 return {
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = true,
+    name = "nightfox",
+    config = function()
+      require("nightfox").setup({
+        options = {
+          transparent = isTransparent,
+        },
+      })
+    end,
+  },
+
+  {
+    "olivercederborg/poimandres.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("poimandres").setup({
+        -- leave this setup function empty for default config
+        -- or refer to the configuration section
+        -- for configuration options
+        transparent = isTransparent,
+      })
+    end,
+  },
+
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      variant = "dark",
+      transparent = isTransparent,
+    },
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      transparent = isTransparent,
+    },
+  },
 
   {
     "folke/tokyonight.nvim",
     opts = {
-      transparent = true,
+      -- transparent = true,
       -- transparent = false,
+      transparent = isTransparent,
       style = "night",
       styles = { sidebars = "dark" },
       sidebars = { "qf", "help", "terminal" },
@@ -35,7 +80,8 @@ return {
             Pmenu = { bg = colors.none },
           }
         end,
-        transparent_background = true,
+        -- transparent_background = true,
+        transparent_background = isTransparent,
         -- transparent_background = false,
         integrations = {
           ts_rainbow = true,
@@ -91,7 +137,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      -- colorscheme = "tokyonight",
+      colorscheme = "cyberdream",
     },
   },
 }

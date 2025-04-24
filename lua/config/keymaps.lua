@@ -53,6 +53,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_set_keymap("i", "<C-Y>", "<cmd>call augment#Accept()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-y>", "<cmd>call augment#Accept()<CR>", { noremap = true, silent = true })
 
 --Reopen last closed buffer/file
 keymap("n", "<Leader>bh", "<cmd>e#<cr>", opts)

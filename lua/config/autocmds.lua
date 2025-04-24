@@ -17,3 +17,44 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.fn.setreg("l", keys, "c")
   end,
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "css", "module.css" },
+--   callback = function()
+--     vim.cmd("vertical resize 40") -- set width to 80 columns
+--   end,
+-- })
+
+-- Track last split type
+local last_split_type = nil
+
+vim.api.nvim_create_autocmd("WinNew", {
+  callback = function()
+    local layout = vim.fn.winlayout()
+    local function get_last_split_direction(layout)
+      if layout[1] == "row" then
+        return "horizontal"
+      end
+      if layout[1] == "col" then
+        return "vertical"
+      end
+      return nil
+    end
+    last_split_type = get_last_split_direction(layout)
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = { "*.css", "*.scss", "*.less" },
+  callback = function(args)
+    local fname = vim.fn.expand(args.file)
+    local is_module = fname:match("module%.css$")
+
+    if
+      last_split_type == "vertical"
+      and (fname:match("%.css$") or fname:match("%.scss$") or fname:match("%.less$") or is_module)
+    then
+      vim.cmd("vertical resize 10")
+    end
+  end,
+})
