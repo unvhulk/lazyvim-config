@@ -1,6 +1,22 @@
 local isTransparent = false
 
+local function toggle_transparency()
+  isTransparent = not isTransparent
+  vim.cmd("colorscheme") -- Reload the current colorscheme
+  print("Transparency toggled: " .. tostring(isTransparent))
+end
+
 return {
+  toggle_transparency = toggle_transparency,
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      transparent_mode = isTransparent,
+    },
+  },
+
   {
     "EdenEast/nightfox.nvim",
     lazy = true,
@@ -37,6 +53,7 @@ return {
       transparent = isTransparent,
     },
   },
+
   {
     "rebelot/kanagawa.nvim",
     opts = {
@@ -47,8 +64,6 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
-      -- transparent = true,
-      -- transparent = false,
       transparent = isTransparent,
       style = "night",
       styles = { sidebars = "dark" },
@@ -62,6 +77,8 @@ return {
         hl.LineNrBelow = { fg = c.green }
         hl.FloatBorder = { fg = c.magenta, bg = c.none }
         hl.WinSeparator = { fg = c.white, bg = c.none }
+        -- hl.Folded = { fg = c.white, bg = "#44313B" }
+        hl.Folded = { fg = c.white, bg = "#333333" }
       end,
     },
   },
@@ -137,8 +154,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "tokyonight",
-      colorscheme = "cyberdream",
+      colorscheme = "tokyonight-moon",
+      -- colorscheme = "gruvbox",
     },
   },
 }

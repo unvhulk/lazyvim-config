@@ -87,6 +87,7 @@ keymap("i", "<M-l>", "<Cmd>CBcline<CR>", opts)
 -- remove a box or a titled line
 keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
 
--- ChatGPT keymaps
--- vim.api.nvim_set_keymap("n", "<leader>acc", ":ChatGPT<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("v", "<leader>aee", ":ChatGPTEditWithInstructions<CR>", { noremap = true, silent = true })
+-- keymaps.lua
+keymap("n", "<leader>No", function()
+  require("notion").openMenu()
+end)

@@ -14,4 +14,6 @@ if vim.g.neovide then
   vim.g.neovide_fullscreen = true
 end
 
+-- ~/.config/nvim/lua/config/options.lua or any init file
+vim.opt.equalalways = false
 vim.g.augment_workspace_folders = { "~/dev/azure/am-explorer-v02/" }
