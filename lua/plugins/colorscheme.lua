@@ -1,4 +1,4 @@
-local isTransparent = false
+local isTransparent = true
 
 local function toggle_transparency()
   isTransparent = not isTransparent
@@ -48,10 +48,23 @@ return {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      variant = "dark",
-      transparent = isTransparent,
-    },
+    opts = function(_, opts)
+      opts.transparent = true
+      opts.italic_comments = true
+    end,
+  },
+
+  -- modicator (auto color line number based on vim mode)
+  {
+    "mawkler/modicator.nvim",
+    dependencies = "scottmckendry/cyberdream.nvim",
+    init = function()
+      -- These are required for Modicator to work
+      vim.o.cursorline = false
+      vim.o.number = true
+      vim.o.termguicolors = true
+    end,
+    opts = {},
   },
 
   {
@@ -155,7 +168,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight-moon",
-      -- colorscheme = "gruvbox",
+      -- colorscheme = "cyberdream",
     },
   },
 }

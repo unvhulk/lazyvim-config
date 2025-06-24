@@ -1,6 +1,7 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
+
 -- Enable relative line numbers for any new buffer or window
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   callback = function()
@@ -9,6 +10,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   end,
 })
 
+-- Adds console.log() for js using register l
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
   callback = function()
@@ -18,47 +20,37 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "css", "module.css" },
+-- Fixing width size
+-- vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter", "VimEnter" }, {
 --   callback = function()
---     vim.cmd("vertical resize 40") -- set width to 80 columns
+--     vim.defer_fn(function()
+--       local wins = vim.api.nvim_tabpage_list_wins(0)
+--
+--       local rightmost_win = nil
+--       local max_col = -1
+--
+--       for _, win in ipairs(wins) do
+--         if vim.api.nvim_win_is_valid(win) then
+--           local pos = vim.api.nvim_win_get_position(win)
+--           local col = pos[2] -- (row, col), col is x-axis
+--           if col > max_col then
+--             max_col = col
+--             rightmost_win = win
+--           end
+--         end
+--       end
+--
+--       if rightmost_win then
+--         vim.wo[rightmost_win].winfixwidth = true
+--         vim.api.nvim_win_set_width(rightmost_win, 60)
+--       end
+--     end, 50) -- slight delay for layout to settle
 --   end,
 -- })
+--
+vim.opt.equalalways = false
 
--- Track last split type
-local last_split_type = nil
-
-vim.api.nvim_create_autocmd("WinNew", {
-  callback = function()
-    local layout = vim.fn.winlayout()
-    local function get_last_split_direction(layout)
-      if layout[1] == "row" then
-        return "horizontal"
-      end
-      if layout[1] == "col" then
-        return "vertical"
-      end
-      return nil
-    end
-    last_split_type = get_last_split_direction(layout)
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = { "*.css", "*.scss", "*.less" },
-  callback = function(args)
-    local fname = vim.fn.expand(args.file)
-    local is_module = fname:match("module%.css$")
-
-    if
-      last_split_type == "vertical"
-      and (fname:match("%.css$") or fname:match("%.scss$") or fname:match("%.less$") or is_module)
-    then
-      vim.cmd("vertical resize 10")
-    end
-  end,
-})
-
+--  Adds highlighting for yanky on theme change
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     vim.api.nvim_set_hl(0, "YankyPut", { link = "IncSearch" })

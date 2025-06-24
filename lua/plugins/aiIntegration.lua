@@ -15,8 +15,10 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     provider = "gemini",
-    gemini = {
-      api_key_name = "GEMINI_API_KEY",
+    providers = {
+      gemini = {
+        api_key_name = "GEMINI_API_KEY",
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

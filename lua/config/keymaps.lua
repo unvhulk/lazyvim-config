@@ -72,6 +72,13 @@ for i = 1, 9 do
   keymap("n", "g" .. i, ":BufferGoto " .. i .. "<CR>", opts)
 end
 
+keymap("n", "<leader>ww", function()
+  local w = vim.api.nvim_win_get_width(0)
+  local h = vim.api.nvim_win_get_height(0)
+  local id = vim.api.nvim_get_current_win()
+  print("Win ID:", id, "Width:", w, "Height:", h)
+end, { desc = "Debug window size" })
+
 -- left aligned fixed size box with left aligned text
 keymap({ "n", "v" }, "<Leader>cb", "<Cmd>CBllbox<CR>", opts)
 -- centered adapted box
@@ -91,3 +98,7 @@ keymap({ "n", "v" }, "<Leader>cd", "<Cmd>CBd<CR>", opts)
 keymap("n", "<leader>No", function()
   require("notion").openMenu()
 end)
+
+vim.keymap.set("n", "<leader>rr", function()
+  require("config.cpp_runner").run_cpp()
+end, { desc = "Compile and Run C++" })

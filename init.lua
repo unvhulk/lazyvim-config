@@ -4,7 +4,6 @@ require("config.lazy")
 vim.opt.clipboard = "unnamedplus"
 -- Enable word wrap by default
 vim.o.wrap = true
-
 --Neovide settings
 if vim.g.neovide then
   vim.opt.clipboard = "unnamedplus"
