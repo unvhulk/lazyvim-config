@@ -99,6 +99,11 @@ keymap("n", "<leader>No", function()
   require("notion").openMenu()
 end)
 
+--  Toggle live server
+vim.keymap.set("n", "<leader>lt", function()
+  require("live-server-nvim").toggle()
+end)
+
 vim.keymap.set("n", "<leader>rr", function()
   require("config.cpp_runner").run_cpp()
 end, { desc = "Compile and Run C++" })

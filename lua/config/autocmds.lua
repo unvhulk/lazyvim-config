@@ -20,6 +20,32 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Listen for opencode events
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OpencodeEvent",
+  callback = function(args)
+    -- See the available event types and their properties
+    vim.notify(vim.inspect(args.data), vim.log.levels.DEBUG)
+    -- Do something interesting, like show a notification when opencode finishes responding
+    if args.data.type == "session.idle" then
+      vim.notify("opencode finished responding", vim.log.levels.INFO)
+    end
+  end,
+})
+--
+-- local function augroup(name)
+--   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+-- end
+--
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = augroup("start_opencode"),
+--   callback = function()
+--     print("Attempting to start opencode server...")
+--     vim.fn.system("opencode &")
+--   end,
+--   desc = "Start opencode server automatically on Vim enter",
+-- })
+
 -- Fixing width size
 -- vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter", "VimEnter" }, {
 --   callback = function()

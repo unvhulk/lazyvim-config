@@ -1,4 +1,4 @@
-local isTransparent = true
+local isTransparent = false
 
 local function toggle_transparency()
   isTransparent = not isTransparent
@@ -155,6 +155,84 @@ return {
             mantle = "#000000",
             crust = "#000000",
           },
+          macchiato = {
+            base = "#000000",
+            mantle = "#000000",
+            crust = "#000000",
+          },
+          frappe = {
+            base = "#000000",
+            mantle = "#000000",
+            crust = "#000000",
+          },
+          latte = {
+            base = "#0b001c", -- main background
+            mantle = "#1c1c1c", -- side panels
+            crust = "#262626", -- outermost UI
+
+            surface0 = "#262626", -- popups
+            surface1 = "#393939",
+            surface2 = "#525252",
+
+            overlay0 = "#6f6f6f",
+            overlay1 = "#8d8d8d",
+            overlay2 = "#a8a8a8",
+
+            text = "#ffffff", -- main text
+            subtext1 = "#f2f4f8",
+            subtext0 = "#dde1e6",
+
+            red = "#ee5396", -- errors
+            maroon = "#ff7eb6", -- hint
+            peach = "#ff6f00", -- diagnostic orange
+            yellow = "#f1c21b", -- warning
+            green = "#42be65", -- success
+            teal = "#3ddbd9", -- constants
+            blue = "#78a9ff", -- functions
+            sapphire = "#4589ff", -- types
+            lavender = "#be95ff", -- keywords
+            mauve = "#d4bbff", -- regex/operator
+            pink = "#ff7eb6", -- builtins
+
+            rosewater = "#fa4d56", -- git added
+            flamingo = "#ff6f00", -- deletions
+          },
+
+          -- latte = {
+          --   base = "#0b001c", -- main background: pure dark gray
+          --   -- base = "#000000", -- main background: pure dark gray
+          --   mantle = "#1c1c1c", -- side panels: softened but not black
+          --   crust = "#262626", -- outermost UI: moderate gray
+          --
+          --   surface0 = "#333333", -- popups/telescope
+          --   surface1 = "#3c3c3c",
+          --   surface2 = "#4d4d4d",
+          --
+          --   overlay0 = "#666666", -- borders/dividers
+          --   overlay1 = "#777777",
+          --   overlay2 = "#888888",
+          --
+          --   text = "#f0f0f0", -- main font: crisp light gray
+          --   subtext1 = "#dddddd", -- secondary text
+          --   subtext0 = "#bbbbbb", -- faint hints
+          --
+          --   -- Regal + vibrant hues
+          --   red = "#d74747", -- errors (deep pop red)
+          --   maroon = "#a83249", -- LSP hint
+          --   peach = "#ff884d", -- diagnostics (bright orange)
+          --   yellow = "#ffc857", -- warnings
+          --   green = "#48b685", -- success
+          --   teal = "#00bfa6", -- constants
+          --   blue = "#539afc", -- functions / normal identifiers
+          --   sapphire = "#307ec7", -- types / classes
+          --   lavender = "#9cffff", -- keywords / flow control
+          --   mauve = "#c678dd", -- regex / operator
+          --   pink = "#f07cc2", -- builtin
+          --
+          --   -- Optional: UI accents
+          --   rosewater = "#f58ca3", -- git add or inline hints
+          --   flamingo = "#e45664", -- deletions
+          -- },
         },
       })
     end,
@@ -164,11 +242,13 @@ return {
     },
   },
 
+  { "rose-pine/neovim", name = "rose-pine" },
+
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-moon",
-      -- colorscheme = "cyberdream",
+      colorscheme = "carbonfox",
+      -- colorscheme = "catppuccin-latte",
     },
   },
 }

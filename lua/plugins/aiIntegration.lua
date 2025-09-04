@@ -1,35 +1,74 @@
 return {
   "yetone/avante.nvim",
+  build = "make",
   event = "VeryLazy",
   lazy = false,
-  -- opts = {
-  --   provider = "openai",
-  --   openai = {
-  --     endpoint = "https://api.groq.com/openai/v1",
-  --     api_key_name = "GROQ_API_KEY", -- Ensure this environment variable is set
-  --     model = "meta-llama/llama-4-scout-17b-16e-instruct", -- Replace with your desired Groq model
-  --     temperature = 0.7,
-  --     max_tokens = 4096,
-  --   },
-  -- },
-  version = false, -- set this if you want to always pull the latest change
+  version = false,
+
   opts = {
-    provider = "gemini",
+    mode = "agentic", -- Can be 'legacy' or 'agentic', by default agentic
+    behaviour = {
+      enable_fastapply = true,
+    },
+    instructions_file = "avante.md",
+    provider = "gemini-cli",
     providers = {
+      groq = {
+        __inherited_from = "openai",
+        api_key_name = "GROQ_API_KEY",
+        endpoint = "https://api.groq.com/openai/v1/",
+        model = "llama-3.3-70b-versatile",
+      },
+
+      openrouter = {
+        __inherited_from = "openai",
+        api_key_name = "OPENROUTER_API_KEY",
+        endpoint = "https://openrouter.ai/api/v1",
+        model = "mistralai/mistral-7b-instruct", -- change as needed
+        extra_request_body = {
+          temperature = 0.7,
+          max_tokens = 2048,
+        },
+      },
+
+      morph = {
+        model = "morph-v3-large",
+      },
+
       gemini = {
         api_key_name = "GEMINI_API_KEY",
       },
     },
+    acp_providers = {
+      ["gemini-cli"] = {
+        command = "gemini",
+        args = { "--experimental-acp" },
+        env = {
+          NODE_NO_WARNINGS = "1",
+          GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+        },
+      },
+      ["claude-code"] = {
+        command = "npx",
+        args = { "acp-claude-code" },
+        env = {
+          NODE_NO_WARNINGS = "1",
+          ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+        },
+      },
+    },
   },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+
   dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "stevearc/dressing.nvim", -- for input provider dressing
+    "folke/snacks.nvim", -- for input provider snacks
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
@@ -45,7 +84,7 @@ return {
             insert_mode = true,
           },
           -- required for Windows users
-          use_absolute_path = true,
+          -- use_absolute_path = true,
         },
       },
     },
