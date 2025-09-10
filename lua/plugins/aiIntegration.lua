@@ -11,7 +11,7 @@ return {
       enable_fastapply = true,
     },
     instructions_file = "avante.md",
-    provider = "gemini-cli",
+    provider = "claude-code",
     providers = {
       groq = {
         __inherited_from = "openai",
@@ -50,7 +50,7 @@ return {
       },
       ["claude-code"] = {
         command = "npx",
-        args = { "acp-claude-code" },
+        args = { "@zed-industries/claude-code-acp" },
         env = {
           NODE_NO_WARNINGS = "1",
           ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),

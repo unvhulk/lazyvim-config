@@ -116,4 +116,4 @@ function M.setup()
   end, { desc = "Switch to Gruvbox Light" })
 end
 
-return M
+-- return M

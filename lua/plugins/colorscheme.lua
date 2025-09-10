@@ -9,6 +9,35 @@ end
 return {
   toggle_transparency = toggle_transparency,
   {
+    "0xstepit/flow.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("flow").setup({
+        transparent = isTransparent,
+        fluo_color = "pink",
+        mode = "normal",
+        aggressive_spell = false,
+      })
+    end,
+  },
+
+  -- Alternative Zaibatsu-like colorschemes if the above doesn't work
+  {
+    "projekt0n/github-nvim-theme",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("github-theme").setup({
+        options = {
+          transparent = isTransparent,
+        },
+      })
+    end,
+  },
+
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = true,
@@ -60,7 +89,7 @@ return {
     dependencies = "scottmckendry/cyberdream.nvim",
     init = function()
       -- These are required for Modicator to work
-      vim.o.cursorline = false
+      vim.o.cursorline = true
       vim.o.number = true
       vim.o.termguicolors = true
     end,
@@ -247,7 +276,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "carbonfox",
+      colorscheme = "github_dark_high_contrast",
       -- colorscheme = "catppuccin-latte",
     },
   },

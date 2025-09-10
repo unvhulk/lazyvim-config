@@ -1,6 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-require("config.theme-mgr").setup()
+-- require("config.theme-mgr").setup()
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
@@ -15,6 +15,7 @@ if vim.g.neovide then
   vim.g.neovide_fullscreen = true
 end
 
+vim.opt.termguicolors = true
 -- ~/.config/nvim/lua/config/options.lua or any init file
 vim.opt.equalalways = false
 vim.g.augment_workspace_folders = { "~/dev/azure/am-explorer-v02/" }
