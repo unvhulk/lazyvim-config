@@ -34,7 +34,7 @@ return {
         -- Send claude code init command to terminal
         local job_id = vim.b.terminal_job_id
         if job_id then
-          vim.fn.chansend(job_id, "claude code init\n")
+          vim.fn.chansend(job_id, "claude \n")
         end
 
         vim.cmd("startinsert")
@@ -47,6 +47,6 @@ return {
     })
 
     -- Add keymap for Claude Code toggle
-    vim.keymap.set("n", "<leader>rC", claude_code_toggle, { desc = "Toggle Claude Code Terminal" })
+    vim.keymap.set("n", "<leader>ac", claude_code_toggle, { desc = "Toggle Claude Code Terminal" })
   end,
 }

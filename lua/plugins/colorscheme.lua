@@ -1,4 +1,4 @@
-local isTransparent = false
+local isTransparent = true
 
 local function toggle_transparency()
   isTransparent = not isTransparent
@@ -276,8 +276,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "github_dark_high_contrast",
-      -- colorscheme = "catppuccin-latte",
+      -- colorscheme = "github_dark_default",
+      colorscheme = "tokyonight-moon",
     },
   },
 }
