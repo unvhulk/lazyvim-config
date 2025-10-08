@@ -74,6 +74,7 @@ vim.api.nvim_create_autocmd("User", {
 --   end,
 -- })
 --
+
 vim.opt.equalalways = false
 
 --  Adds highlighting for yanky on theme change
@@ -81,5 +82,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     vim.api.nvim_set_hl(0, "YankyPut", { link = "IncSearch" })
     vim.api.nvim_set_hl(0, "YankyYanked", { link = "Search" })
+  end,
+})
+
+-- Prevent auto-insert mode in terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("stopinsert")
   end,
 })
