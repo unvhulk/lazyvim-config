@@ -62,7 +62,12 @@ return {
       local function get_backend()
         local term = vim.env.TERM or ""
         -- Ghostty, Kitty, and WezTerm all support kitty graphics protocol
-        if term:match("kitty") or vim.env.KITTY_WINDOW_ID or vim.env.TERM_PROGRAM == "WezTerm" or vim.env.GHOSTTY_RESOURCES_DIR then
+        if
+          term:match("kitty")
+          or vim.env.KITTY_WINDOW_ID
+          or vim.env.TERM_PROGRAM == "WezTerm"
+          or vim.env.GHOSTTY_RESOURCES_DIR
+        then
           return "kitty"
         else
           return "ueberzug"
@@ -76,23 +81,72 @@ return {
             enabled = true,
             clear_in_insert_mode = false,
             download_remote_images = true,
-            only_render_image_at_cursor = false,
+            only_render_image_at_cursor = true, -- Show image only at cursor position
             filetypes = { "markdown", "vimwiki", "md" },
           },
           neorg = {
             enabled = false,
           },
         },
-        max_width = nil,
-        max_height = nil,
+        max_width = 1920, -- Large absolute width
+        max_height = 1080, -- Large absolute height
         max_width_window_percentage = nil,
-        max_height_window_percentage = 50,
-        window_overlap_clear_enabled = false,
+        max_height_window_percentage = nil,
+        window_overlap_clear_enabled = true,
         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "", "neo-tree" },
-        editor_only_render_when_focused = false,
-        tmux_show_only_in_active_window = false,
+        editor_only_render_when_focused = true, -- Only render when Neovim has focus
+        tmux_show_only_in_active_window = true,
         hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
       })
+
+      -- Clear images when leaving Neovim, losing focus, or switching buffers
+      vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend", "FocusLost", "BufLeave" }, {
+        pattern = "*.md,*.markdown",
+        callback = function()
+          local img = require("image")
+          if img then
+            img.clear()
+          end
+        end,
+      })
+
+      -- Add keybinding to manually clear images
+      vim.keymap.set("n", "<leader>ic", function()
+        require("image").clear()
+        vim.notify("Cleared all images", vim.log.levels.INFO)
+      end, { desc = "Clear all images" })
+
+      -- Add keybinding to re-render images
+      vim.keymap.set("n", "<leader>ir", function()
+        local img = require("image")
+        img.clear()
+        vim.defer_fn(function()
+          local api = require("image")
+          for _, image in ipairs(api.get_images()) do
+            image:render()
+          end
+        end, 100)
+        vim.notify("Re-rendering images", vim.log.levels.INFO)
+      end, { desc = "Re-render images" })
+
+      -- Add keybinding to open image in external viewer for full size
+      vim.keymap.set("n", "<leader>io", function()
+        local line = vim.api.nvim_get_current_line()
+        local image_path = line:match("!%[.-%]%((.-)%)")
+        if image_path then
+          -- Expand ~ and relative paths
+          if image_path:match("^~") then
+            image_path = vim.fn.expand(image_path)
+          elseif not image_path:match("^/") then
+            local current_file = vim.fn.expand("%:p:h")
+            image_path = current_file .. "/" .. image_path
+          end
+          vim.fn.jobstart({ "xdg-open", image_path }, { detach = true })
+          vim.notify("Opening image: " .. image_path, vim.log.levels.INFO)
+        else
+          vim.notify("No image found on this line", vim.log.levels.WARN)
+        end
+      end, { desc = "Open image in external viewer" })
     end,
   },
 }

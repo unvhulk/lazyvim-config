@@ -31,6 +31,10 @@ return {
         { "<leader>zf", "<Cmd>ZkNotes { match = { vim.fn.input('Search: ') } }<CR>", desc = "Find notes" },
         { "<leader>zb", "<Cmd>ZkBacklinks<CR>", desc = "Show backlinks" },
         { "<leader>zl", "<Cmd>ZkLinks<CR>", desc = "Show links" },
+        { "<leader>zi", "<Cmd>ZkInsertLink<CR>", desc = "Insert link", mode = { "n", "v" } },
+        -- Add tech word to dictionary when on it
+        { "zg", desc = "Add word to dictionary" },
+        { "zw", desc = "Mark word as misspelled" },
       },
     },
   },
