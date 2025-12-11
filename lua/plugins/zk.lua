@@ -26,6 +26,11 @@ return {
       spec = {
         { "<leader>z", group = "zk" },
         { "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "New note" },
+        {
+          "<leader>znd",
+          "<Cmd>ZkNew { dir = vim.fn.input('Directory: '), title = vim.fn.input('Title: ') }<CR>",
+          desc = "New note in directory",
+        },
         { "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", desc = "Open notes" },
         { "<leader>zt", "<Cmd>ZkTags<CR>", desc = "Browse tags" },
         { "<leader>zf", "<Cmd>ZkNotes { match = { vim.fn.input('Search: ') } }<CR>", desc = "Find notes" },
