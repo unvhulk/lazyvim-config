@@ -20,6 +20,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    local macro = [[yiwoprint("]] .. [[<C-r>0]] .. [[", ]] .. [[<C-r>0]] .. [[)<Esc>]]
+    local keys = vim.api.nvim_replace_termcodes(macro, true, false, true)
+    vim.fn.setreg("l", keys, "c")
+  end,
+})
+
 vim.opt.equalalways = false
 
 --  Adds highlighting for yanky on theme change

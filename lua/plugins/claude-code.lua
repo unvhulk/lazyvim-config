@@ -22,12 +22,12 @@ return {
       -- Check if we have a valid terminal buffer
       if claude_terminal_buf and vim.api.nvim_buf_is_valid(claude_terminal_buf) then
         -- Open existing terminal in vertical split with reduced size
-        vim.cmd("60vsplit")
+        vim.cmd("80vsplit")
         claude_terminal_win = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(claude_terminal_win, claude_terminal_buf)
       else
         -- Create new terminal with reduced size
-        vim.cmd("60vsplit")
+        vim.cmd("80vsplit")
         claude_terminal_win = vim.api.nvim_get_current_win()
         vim.cmd("terminal")
         claude_terminal_buf = vim.api.nvim_get_current_buf()
