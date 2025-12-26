@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Adds print() for python using register l
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "python" },
   callback = function()

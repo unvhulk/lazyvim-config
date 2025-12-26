@@ -40,11 +40,6 @@ return {
       end
     end
 
-    -- Create user command
-    vim.api.nvim_create_user_command("ClaudeCode", claude_code_toggle, {
-      desc = "Toggle Claude Code terminal",
-    })
-
     local function gemini_code_toggle()
       -- Check if terminal window is open and valid
       if gemini_terminal_win and vim.api.nvim_win_is_valid(gemini_terminal_win) then

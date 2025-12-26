@@ -84,9 +84,6 @@ keymap({ "n", "v" }, "<Leader>cb", "<Cmd>CBllbox<CR>", opts)
 -- centered adapted box
 keymap({ "n", "v" }, "<Leader>cB", "<Cmd>CBacbox<CR>", opts)
 
--- left aligned titled line with left aligned text
-keymap({ "n", "v" }, "<Leader>ct", "<Cmd>llline<CR>", opts)
-
 -- centered line
 keymap("n", "<Leader>cL", "<Cmd>CBcline<CR>", opts)
 keymap("i", "<M-l>", "<Cmd>CBcline<CR>", opts)
@@ -100,10 +97,11 @@ keymap("n", "<leader>No", function()
 end)
 
 --  Toggle live server
-vim.keymap.set("n", "<leader>lt", function()
+vim.keymap.set("n", "<leader>lj", function()
   require("live-server-nvim").toggle()
 end)
 
+-- Run C++ code
 vim.keymap.set("n", "<leader>rr", function()
   require("config.cpp_runner").run_cpp()
 end, { desc = "Compile and Run C++" })
